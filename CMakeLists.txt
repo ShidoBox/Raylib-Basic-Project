@@ -12,6 +12,6 @@ if(MINGW)
 target_link_libraries(${PROJECT_NAME} raylib winmm.lib)
 endif()
 
-if(LINUX)
+if(UNIX)
 target_link_libraries(${PROJECT_NAME} raylib pthread ${CMAKE_DL_LIBS})
 endif()
