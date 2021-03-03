@@ -34,9 +34,9 @@ else:
 shutil.unpack_archive(asset_file_name)
 print(asset_file_name + " extracted!")
 
-if platform == 2 or 3:  # Set extension for Linux
+if platform == 2 or platform == 3:  # Set extension for Linux
     folder_name = asset_file_name.replace(".tar.gz", "")
-elif platform == 8 or 6:  # Set extension for Windows
+elif platform == 6 or platform == 8:  # Set extension for Windows
     folder_name = asset_file_name.replace(".zip", "")
 
 if os.path.exists("./include"):
