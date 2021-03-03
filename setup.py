@@ -50,8 +50,14 @@ shutil.move("./" + folder_name + "/lib", "./")
 os.rmdir("./" + folder_name)
 print("raylib files moved with success!")
 
+urllib.request.urlretrieve("https://raw.githubusercontent.com/raysan5/raylib/master/src/rlgl.h", "./include/rlgl.h")
+urllib.request.urlretrieve("https://raw.githubusercontent.com/raysan5/raygui/master/src/raygui.h", "./include/raygui.h")
+urllib.request.urlretrieve("https://raw.githubusercontent.com/raysan5/raylib/master/src/raymath.h", "./include"
+                                                                                                    "/raymath.h")
+
 # Deletes the precompiled binaries from github
 if delete_source_file:
     os.remove("./" + asset_file_name)
+
 
 print("Finished!!!")
