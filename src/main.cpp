@@ -1,62 +1,46 @@
-/*******************************************************************************************
-*
-*   raylib [core] example - Basic window
-*
-*   Welcome to raylib!
-*
-*   To test examples, just press F6 and execute raylib_compile_execute script
-*   Note that compiled executable is placed in the same folder as .c file
-*
-*   You can find all basic examples on C:\raylib\raylib\examples folder or
-*   raylib official webpage: www.raylib.com
-*
-*   Enjoy using raylib. :)
-*
-*   This example has been created using raylib 1.0 (www.raylib.com)
-*   raylib is licensed under an unmodified zlib/libpng license (View raylib.h for details)
-*
-*   Copyright (c) 2013-2016 Ramon Santamaria (@raysan5)
-*
-********************************************************************************************/
-
 #include "raylib.h"
+#include "rlgl.h"
+#define RAYGUI_IMPLEMENTATION
+#include "raygui.h"
+#undef RAYGUI_IMPLEMENTATION
 
-int main()
-{
-  // Initialization
-  //--------------------------------------------------------------------------------------
-  int screenWidth = 800;
-  int screenHeight = 450;
+int main() {
+	InitWindow(800, 450, "raylib - rotation cube");
+	SetTargetFPS(60);
 
-  InitWindow(screenWidth, screenHeight, "raylib [core] example - basic window");
+	Camera3D camera = {0};
+	camera.position = (Vector3) {10, 6.5, 10};
+	camera.target = (Vector3) {0.0f, 1.5f, 5.0f};
+	camera.up = (Vector3) {0.0f, 1.0f, 0.0f};
+	camera.fovy = 45.0f;
+	camera.type = CAMERA_PERSPECTIVE;
 
-  SetTargetFPS(60);
-  //--------------------------------------------------------------------------------------
+	float cubeSpeed = 5;
+	Vector3 cubePosition = {0,1.5,0};
+	auto cubeColor = DARKPURPLE;
 
-  // Main game loop
-  while (!WindowShouldClose())    // Detect window close button or ESC key
-  {
-	// Update
-	//----------------------------------------------------------------------------------
-	// TODO: Update your variables here
-	//----------------------------------------------------------------------------------
+	while (!WindowShouldClose()) {
+		BeginDrawing();
+		ClearBackground(RAYWHITE);
 
-	// Draw
-	//----------------------------------------------------------------------------------
-	BeginDrawing();
+		BeginMode3D(camera);
+		rlPushMatrix();
+		rlRotatef(GetTime()*cubeSpeed*20,0,1,0);
+		DrawCube(cubePosition,3,3,3,cubeColor);
+		DrawCubeWires(cubePosition,3,3,3,DARKGREEN);
+		DrawGrid(10,10);
+		rlPopMatrix();
+		EndMode3D();
 
-	ClearBackground(RAYWHITE);
+		/* GUI  */
+		GuiPanel((Rectangle){0,0,400,450});
+		DrawText("Cube speed",120,10,30,LIGHTGRAY);
+		cubeSpeed = GuiSlider((Rectangle){20,50,360,30}, nullptr, nullptr,cubeSpeed,0,10);
+		DrawText("Cube color",120,150,30,LIGHTGRAY);
+		cubeColor = GuiColorPicker((Rectangle){100,200,200,200},cubeColor);
 
-	DrawText("Congrats! You created your first window!", 190, 200, 20, LIGHTGRAY);
-
-	EndDrawing();
-	//----------------------------------------------------------------------------------
-  }
-
-  // De-Initialization
-  //--------------------------------------------------------------------------------------
-  CloseWindow();        // Close window and OpenGL context
-  //--------------------------------------------------------------------------------------
-
-  return 0;
+		EndDrawing();
+	}
+	CloseWindow();
+	return 0;
 }
