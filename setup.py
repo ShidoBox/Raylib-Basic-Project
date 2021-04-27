@@ -47,7 +47,7 @@ if os.path.exists("./lib"):
 # Moving the extracted files to the project folder
 shutil.move("./" + folder_name + "/include", "./include")
 shutil.move("./" + folder_name + "/lib", "./")
-os.rmdir("./" + folder_name)
+shutil.rmtree("./" + folder_name, ignore_errors=True)
 print("raylib files moved with success!")
 
 urllib.request.urlretrieve("https://raw.githubusercontent.com/raysan5/raylib/master/src/rlgl.h", "./include/rlgl.h")

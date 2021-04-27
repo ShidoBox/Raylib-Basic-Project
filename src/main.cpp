@@ -16,7 +16,7 @@ int main() {
 	camera.target   = {0.0f, 1.5f, 5.0f};
 	camera.up       = {0.0f, 1.0f, 0.0f};
 	camera.fovy     = 45.0f;
-	camera.type     = CAMERA_PERSPECTIVE;
+	camera.projection     = CAMERA_PERSPECTIVE;
 
 	Vector3 cubePosition = {0, 1.5, 0};
 	float cubeSpeed      = 5;
