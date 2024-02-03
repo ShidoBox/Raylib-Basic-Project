@@ -12,11 +12,11 @@ int main() {
 	SetTargetFPS(60);
 
 	Camera3D camera;
-	camera.position = {10, 6.5, 10};
-	camera.target   = {0.0f, 1.5f, 5.0f};
-	camera.up       = {0.0f, 1.0f, 0.0f};
-	camera.fovy     = 45.0f;
-	camera.projection     = CAMERA_PERSPECTIVE;
+	camera.position   = {10, 6.5, 10};
+	camera.target     = {0.0f, 1.5f, 5.0f};
+	camera.up         = {0.0f, 1.0f, 0.0f};
+	camera.fovy       = 45.0f;
+	camera.projection = CAMERA_PERSPECTIVE;
 
 	Vector3 cubePosition = {0, 1.5, 0};
 	float cubeSpeed      = 5;
@@ -40,7 +40,7 @@ int main() {
 		DrawText("Cube speed", 120, 10, 30, LIGHTGRAY);
 		GuiSlider({20, 50, 360, 30}, nullptr, nullptr, &cubeSpeed, 0, 10);
 		DrawText("Cube color", 120, 150, 30, LIGHTGRAY);
-		GuiColorPicker({100, 200, 200, 200}, nullptr,&cubeColor);
+		GuiColorPicker({100, 200, 200, 200}, nullptr, &cubeColor);
 
 		EndDrawing();
 	}
