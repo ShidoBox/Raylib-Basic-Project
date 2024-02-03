@@ -7,11 +7,11 @@ import os
 delete_source_file = True
 
 # SELECT YOUR PLATFORM
-# 2 - linux_amd64
-# 3 - linux_i386
-# 6 - win32_mingw-w64
-# 8 - win64_mingw-w64
-platform = 8
+# 0 - linux_amd64
+# 1 - linux_i386
+# 4 - win32_mingw-w64
+# 6 - win64_mingw-w64
+platform = 6
 
 # End of configurations
 

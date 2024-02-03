@@ -36,11 +36,11 @@ int main() {
 		EndMode3D();
 
 		/* GUI  */
-		GuiPanel({0, 0, 400, 450});
+		GuiPanel({0, 0, 400, 450}, nullptr);
 		DrawText("Cube speed", 120, 10, 30, LIGHTGRAY);
-		cubeSpeed = GuiSlider({20, 50, 360, 30}, nullptr, nullptr, cubeSpeed, 0, 10);
+		GuiSlider({20, 50, 360, 30}, nullptr, nullptr, &cubeSpeed, 0, 10);
 		DrawText("Cube color", 120, 150, 30, LIGHTGRAY);
-		cubeColor = GuiColorPicker({100, 200, 200, 200}, cubeColor);
+		GuiColorPicker({100, 200, 200, 200}, nullptr,&cubeColor);
 
 		EndDrawing();
 	}
